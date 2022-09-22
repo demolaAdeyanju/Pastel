@@ -1,0 +1,22 @@
+SUBROUTINE BFS.PASTEL.UPLOAD.SELECT
+*-------------------------------------------------------
+* Description     : Select Routine for BFS.PASTEL.UPLOAD
+* Date Written    : 2018
+* By              : Ademola - Temenos
+* Version         : 1.0
+*-------------------------------------------------------
+  $INSERT I_COMMON
+  $INSERT I_EQUATE
+  $INSERT I_BFS.PASTEL.UPLOAD.COMMON
+
+  COMP.SEL.LIST = ""
+  COMP.SEL.CMD = ""
+  
+  COMP.SEL.CMD  = "SELECT ":FN.COMPANY
+  CALL EB.READLIST(COMP.SEL.CMD,COMP.SEL.LIST,"", NO.OF.COMP,COMP.SEL.ERR)
+
+  IF COMP.SEL.LIST THEN
+		CALL BATCH.BUILD.LIST("",COMP.SEL.LIST)
+	END	
+  RETURN
+END
